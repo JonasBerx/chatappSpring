@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="css/sample.css">
+</head>
+<body>
+
+<header role="banner">
+    <img alt="Books" src="books.jpg">
+    <h1><span>Chat App</span></h1>
+    <nav>
+        <ul>
+            <li  id="actual"><a href="/">Home</a></li>
+        </ul>
+    </nav>
+    <h2>
+       Home
+    </h2>
+
+</header>
+    <main>
+        <h3 th:if="${session != null}" th:text="${session?.user?.firstName}  +' - ' + ${session?.user?.status}">Test</h3>
+
+
+
+    <form action="/login" method="post">
+        <label for="username"></label>
+        <input id="username" type="text" name="username" value="jan@ucll.be">
+        <label for="password"></label>
+        <input id="password" type="password" name="password" value="t">
+        <input type="submit" value="Log in">
+    </form>
+
+
+    <form id="statusForm">
+        <p>Change Status</p>
+        <div>
+            <div class="form-group align-items-center">
+                <input name="status" type="text" class="form-control bg-black text-white mr-3" id="statusInput">
+            </div>
+            <button id="statusButton" type="submit" class="btn btn-success font-weight-bolder">Change</button>
+        </div>
+    </form>
+
+    <table id="friends">
+        <tr>
+            <th>name</th>
+            <th>status</th>
+        </tr>
+    </table>
+        <form id="friendForm">
+            <div>
+                <p>
+                    <label for="name">name:</label>
+                    <input type="text" name="name" id="name">
+                </p>
+                <input id="addfriend" type="submit" value="voeg toe">
+            </div>
+        </form>
+
+    <script src="/main.js"></script>
+    </main>
+    <footer>
+	<span class="right"> &copy; Webontwikkeling 4, UC
+		Leuven-Limburg
+	</span>
+    </footer>
+
+</body>
+</html>
