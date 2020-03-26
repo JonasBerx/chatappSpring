@@ -21,17 +21,21 @@
 
 </header>
     <main>
-        <h3 th:if="${session != null}" th:text="${session?.user?.firstName}  +' - ' + ${session?.user?.status}">Test</h3>
+        <h3 th:if="${session?.user != null}" th:text="${session?.user?.firstName}  +' - ' + ${session?.user?.status}">Test</h3>
+        <form action="/logout" method="post">
+            <button type="submit" id="logOut">Logout</button>
+        </form>
+        <div >
+            <form action="/login" method="post">
+                <label for="username"></label>
+                <input id="username" type="text" name="username" value="jan@ucll.be">
+                <label for="password"></label>
+                <input id="password" type="password" name="password" value="t">
+                <input type="submit" value="Log in">
+            </form>
+        </div>
 
 
-
-    <form action="/login" method="post">
-        <label for="username"></label>
-        <input id="username" type="text" name="username" value="jan@ucll.be">
-        <label for="password"></label>
-        <input id="password" type="password" name="password" value="t">
-        <input type="submit" value="Log in">
-    </form>
 
 
     <form id="statusForm">
@@ -56,11 +60,32 @@
                     <label for="name">name:</label>
                     <input type="text" name="name" id="name">
                 </p>
-                <input id="addfriend" type="submit" value="voeg toe">
+                <input id="addfriend" type="button" value="voeg toe">
             </div>
         </form>
 
+
+        <section class="blogGrid" style="display: grid; grid-template-columns: 1fr">
+            <div>
+                <article class="blogItem" style="padding: 10px">YEYEYEO Blog 1</article>
+                <form id="1">
+                    <input type="text" name="name" id="user1">
+                    <input type="text" name="comment" id="comment1"/>
+                    <input type="number" min="0" max="10" id="rating1">
+                    <button class="comment" type="button">Comment</button>
+                </form>
+                <table id="t1">
+                    <tr>
+                        <th>Name</th>
+                        <th>Comment</th>
+                        <th>Rating</th>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
     <script src="/main.js"></script>
+    <script src="/blog.js"></script>
     </main>
     <footer>
 	<span class="right"> &copy; Webontwikkeling 4, UC

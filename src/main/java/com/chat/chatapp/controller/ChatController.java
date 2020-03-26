@@ -1,5 +1,6 @@
 package com.chat.chatapp.controller;
 
+import com.chat.chatapp.db.Comments;
 import com.chat.chatapp.model.Person;
 import com.chat.chatapp.model.PersonService;
 import com.google.gson.JsonObject;
@@ -29,6 +30,14 @@ public class ChatController {
     public ChatController(PersonService personService) {
         this.personService = personService;
     }
+
+    @PostMapping("/logout")
+    public String logout(HttpServletRequest request) {
+        request.getSession().invalidate();
+        return "redirect:/";
+    }
+
+
 
     @PostMapping("/login")
     public String home(Model m, @RequestParam("username") String username, @RequestParam("password") String password, HttpServletRequest request) {
@@ -64,6 +73,19 @@ public class ChatController {
         }
     }
 
+    @GetMapping("/comments")
+    public void getComments(HttpServletRequest request, HttpServletResponse response) {
+        System.out.println("getting comments");
+        response.setContentType("text");
+        try {
+            response.getWriter().write("test");
+        } catch (IOException e) {
+            e.printStackTrace();
+
+        }
+    }
+
+
     @GetMapping("/friends")
     public void getFriendsList(HttpServletRequest request, HttpServletResponse response) {
         HttpSession session = request.getSession();
@@ -83,7 +105,6 @@ public class ChatController {
 
     }
 
-
     @PostMapping("/change/{status}")
     public void setStatus(HttpServletResponse response, HttpServletRequest request, @PathVariable("status") String status) {
         HttpSession session = request.getSession();
@@ -98,6 +119,7 @@ public class ChatController {
 
     }
 
+
     private Object toJson(List<Person> list){
         JsonObject json = new JsonObject();
         for (Person u:list){
@@ -108,5 +130,7 @@ public class ChatController {
         }
         return json.toString();
     }
+
+
 
 }

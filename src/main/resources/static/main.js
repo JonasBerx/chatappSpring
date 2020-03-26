@@ -1,6 +1,10 @@
 let xhr = new XMLHttpRequest();
 let button = document.getElementById("statusButton");
 
+
+
+
+
 let add = document.getElementById("addfriend");
 add.addEventListener("click",addFriend,false);
 button.addEventListener("click",setstatus,false);
@@ -77,3 +81,6 @@ function addFriend() {
 
 
 }
+
+
+
