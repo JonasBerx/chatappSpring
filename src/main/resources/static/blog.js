@@ -4,7 +4,13 @@ console.log(blog1);
 blog1.addEventListener("click",addComment, false);
 
 
+let table = document.getElementById("t1");
+
+
 // ------------------- Websockets -------------------- //
+
+
+
 
 function addComment() {
     let name = document.getElementById("user1").value;
