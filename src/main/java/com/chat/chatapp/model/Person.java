@@ -59,6 +59,7 @@ public class Person {
 	public Person() {
 	}
 
+
 	public Role getRole() {
 		return this.role;
 	}
